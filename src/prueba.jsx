@@ -12,6 +12,7 @@ export default function Prueba() {
     const [frame, setFrame] = React.useState({
         translate: [0,0],
         scale: [1,1],
+        rotate: 0,
     });
     React.useEffect(() => {
         setTarget(document.querySelector(".target"));
@@ -22,7 +23,10 @@ export default function Prueba() {
         <Moveable
             target={target}
             resizable={frame.translate}
-           // scalable={frame.scale}
+            scale={frame.scale}
+            throttleRotate={0}
+            rotationPosition={"top"}
+            rotatable={true}
             keepRatio={false}
             throttleResize={1}
             renderDirections={["nw","n","ne","w","e","sw","s","se"]}
@@ -42,6 +46,14 @@ export default function Prueba() {
                 e.target.style.height = `${e.height}px`;
                 e.target.style.transform = `translate(${beforeTranslate[0]}px, ${beforeTranslate[1]}px)`;
             }}
+            onRotateStart={e => {
+                e.set(frame.rotate);
+            }}
+            onRotate={({ beforeRotate }) => {
+                frame.rotate = beforeRotate;
+                target.style.transform = `rotate(${beforeRotate}deg)`;
+            }}
+
         />
     </div>;
 }
