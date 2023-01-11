@@ -1,8 +1,11 @@
 import { NewComponentMovile } from "./NewComponentMovile"
+import { useEffect, useState } from "react";
 
 
 
 export const ContainerImg = ({ imagen }) => {
+
+    
     return (
         <>
             {
@@ -13,7 +16,7 @@ export const ContainerImg = ({ imagen }) => {
                             id={img.id}
                             url={img.url}
                         />
-
+                       
                     </>
                 ))
             }

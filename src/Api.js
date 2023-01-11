@@ -1,13 +1,18 @@
 import Axios from 'axios'
 import { useEffect, useState } from 'react'
 import { ContainerImg } from './ContainerImg'
-import Moveable from "react-moveable";
+
+
+
 
 export const API = () => {
 const [imagen, setImagen] = useState([])
 
+
 useEffect(() => {
+   
   Axios.get('https://jsonplaceholder.typicode.com/photos')
+  
     .then(({data}) => {
         setImagen(data)
     })
@@ -19,7 +24,12 @@ useEffect(() => {
 
   return (
     <>
-        <ContainerImg imagen={imagen}/>
+            
+
+        <ContainerImg imagen={imagen}
+        />
+
+       
     </>
   )
 }

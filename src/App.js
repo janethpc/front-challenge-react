@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import Moveable from "react-moveable";
 import { API } from "./Api";
+import Prueba from "./prueba";
+
 
 
 const App = () => {
@@ -74,11 +76,9 @@ const App = () => {
         >
           {moveableComponents.map((item, index) => (
             <>
-              <API 
-              item={item.id}
-              key={index}
-              />
-
+   <Prueba/>
+              <API/>
+             
               <Component
                 {...item}
                 key={index}
@@ -86,6 +86,7 @@ const App = () => {
                 handleResizeStart={handleResizeStart}
                 setSelected={setSelected}
                 isSelected={selected === item.id}
+                resizable={true}
               />
 
             </>
@@ -110,6 +111,7 @@ const Component = ({
   setSelected,
   isSelected = false,
   updateEnd,
+  resizable = true,
 }) => {
   const ref = useRef();
 
